@@ -1,0 +1,88 @@
+/* Fullscreen Background */
+body {
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    background: linear-gradient(180deg, #0d152e 4.5%, #1b2b61 46.5%, #056652);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Fullscreen container */
+.slide-169-1 {
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.vora {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 28px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+}
+.prompt {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    line-height: 100%;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+/* Search Box */
+.search-box {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+input, select {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #f8f8f8;
+}
+
+
+.translate-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(30, 30, 30, 0.35);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.language {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #f8f8f8;
+    font-size: 16px;
+    text-align: center;
+}
+
+.translate-button:hover {
+    background: rgba(67, 56, 56, 0.5);
+}

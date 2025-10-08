@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <title>Vora - Translation</title>
+    <style>
+        .slide-169-1 {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(180deg, #0d152e 4.5%, #1b2b61 46.5%, #056652);
+            font-family: "Inter", sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px; /* tightened to reclaim vertical space */
+        }
+
+        .vora {
+            font-size: 30px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back-button {
+            padding: 8px 14px; /* slightly smaller to save space */
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .song-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px; /* reduced gap */
+            padding: 8px 20px 0; /* reduced top/bottom spacing */
+        }
+
+        .album-art {
+            width: 140px; /* slightly smaller to fit viewport */
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .song-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .song-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .song-artist {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .song-album {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .translation-container {
+            display: flex;
+            gap: 16px; /* slightly tighter gap */
+            margin: 8px auto 12px; /* move up a bit and add bottom breathing room */
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px; /* horizontal padding only */
+            /* Constrain height to keep boxes within background frame. 
+               Header (~56px) + song-info (~160px) + margins/padding (~40px) ≈ 256px */
+            height: calc(100vh - 256px);
+        }
+
+        .lyrics-box {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 16px;
+            overflow-y: auto;
+            height: 100%; /* fill constrained container */
+            min-height: 0; /* allow flex children to shrink */
+            display: flex;
+            flex-direction: column;
+            /* Firefox scrollbar */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+        }
+
+        /* WebKit scrollbars */
+        .lyrics-box::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .lyrics-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .lyrics-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            border: 2px solid transparent; /* creates a floating translucent look */
+            background-clip: padding-box;
+        }
+        .lyrics-box:hover::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            background-clip: padding-box;
+        }
+
+        .lyrics-header {
+            font-size: 18px;
+            margin-bottom: 10px; /* slightly reduced */
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            font-family: "Inter", sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0; /* content padding handled by .lyrics-box */
+            text-align: left;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+            width: 100%;
+            box-sizing: border-box;
+            flex: 1; /* let the text fill the scrollable area */
+        }
+
+        .loading {
+            text-align: left;
+            padding: 8px 0;
+            font-style: italic;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-169-1">
+        <div class="header">
+            <a class="vora" href="/search">Vora</a>
+            <a class="back-button" href="/search">Back to Search</a>
+        </div>
+
+        <div id="song-info" class="song-info"></div>
+
+        <div class="translation-container">
+            <div class="lyrics-box">
+                <div class="lyrics-header">Original</div>
+                <pre id="original-lyrics">Loading original lyrics...</pre>
+            </div>
+            <div class="lyrics-box">
+                <div class="lyrics-header">Translation</div>
+                <pre id="translated-lyrics">Loading translation...</pre>
+            </div>
+        </div>
+    </div>
+    <script src="/static/translation.js"></script>
+    <script>
+        (function(){
+            var btn = document.querySelector('.back-button');
+            if (btn) {
+                btn.addEventListener('click', function(e){ /* normal navigation */ });
+            }
+        })();
+    </script>
+</body>
+</html>

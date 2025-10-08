@@ -1,0 +1,20 @@
+.vora {
+    position: absolute;
+    top: 28px;
+    left: -463px;
+    line-height: 100%;
+    display: inline-block;
+    width: 1104px;
+}
+.slide-169-1 {
+    width: 100%;
+    position: relative;
+    background: linear-gradient(180deg, #0d152e 4.5%, #1b2b61 46.5%, #056652);
+    height: 1080px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 32px;
+    color: #fff;
+    font-family: Inter;
+}
+
